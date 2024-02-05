@@ -1,0 +1,13 @@
+http:
+  routers:
+    back-2-router:
+      rule: "Host(`back-two.internal.fr`)"
+      entryPoints:
+        - internal
+      service: back-2-service
+
+  services:
+    back-2-service:
+      loadBalancer:
+        servers:
+          - url: "localhost:8088"
