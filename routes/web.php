@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+    if ($request->header('host') === 'localhost:8088') {
+        $server = 'Serveur 1';
+    } else if ($request->header('host') === 'localhost:8089') {
+        $server = 'Serveur 2';
+    }
+
+    return view('welcome', compact('server'));
 });
 
 Route::get('/dashboard', function () {
