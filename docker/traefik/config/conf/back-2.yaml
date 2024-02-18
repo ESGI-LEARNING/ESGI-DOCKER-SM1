@@ -10,4 +10,4 @@ http:
     back-2-service:
       loadBalancer:
         servers:
-          - url: "localhost:8088"
+          - url: "localhost:8089"

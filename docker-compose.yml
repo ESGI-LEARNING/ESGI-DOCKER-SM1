@@ -95,22 +95,6 @@ services:
         networks:
             - app_network
 
-    # Portainer service
-    portainer:
-        image: portainer/portainer-ce:latest
-        container_name: ${APP_SLUG}_portainer
-        restart: unless-stopped
-        ports:
-            - "9999:9000"
-        security_opt:
-            - no-new-privileges:true
-        volumes:
-            - /etc/localtime:/etc/localtime:ro
-            - /var/run/docker.sock:/var/run/docker.sock:ro
-            - ./portainer-data:/data
-        networks:
-            - app_network
-
     # Minio Service
     minio:
         image: 'minio/minio:latest'
@@ -123,20 +107,6 @@ services:
         volumes:
             - ./minio-data:/data/minio
         command: 'minio server /data/minio --console-address ":8900"'
-        networks:
-            - app_network
-
-    # Nodejs Service
-    nodejs:
-        build:
-            context: .
-            dockerfile: docker/node/Dockerfile
-        container_name: ${APP_SLUG}_nodejs
-        command: npm run dev
-        restart: unless-stopped
-        working_dir: /usr/src/app
-        volumes:
-            - ./:/usr/src/app
         networks:
             - app_network
 
