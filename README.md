@@ -52,5 +52,6 @@ docker compose exec php php artisan key:generate
 - traefik : http://localhost/8080
 
 ### Authors
-* Théo Meunier @TheoMeunier
-* Alice Lemerre @AliceLemerre
+* **Théo MEUNIER** _alias_ [@TheoMeunier](https://github.com/TheoMeunier)
+* **Alice LEMERRE** _alias_ [@AliceLemerre](https://github.com/AliceLemerre)
+
